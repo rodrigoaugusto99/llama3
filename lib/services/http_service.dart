@@ -73,6 +73,7 @@ class HttpService {
     final response = await http.delete(
       Uri.parse(url),
       headers: {"Content-Type": "application/json"},
+      body: jsonEncode(body),
     );
     if (response.statusCode == 200) {
       _log.i("Success: ${response.body}");
