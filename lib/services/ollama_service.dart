@@ -4,7 +4,7 @@ import 'package:ollama/models/model_model.dart';
 import 'package:ollama/services/http_service.dart';
 
 class OllamaService {
-  String url = 'http://10.0.2.2:11434';
+  String url = 'http://192.168.1.64';
   final _httpService = locator<HttpService>();
   final _log = getLogger("OllamaService");
 
@@ -38,6 +38,11 @@ class OllamaService {
         body: body,
       );
       _log.i('criado com sucesso!');
+      //todo: verificar se o ultimo status foi success.
+
+      //todo: averiguar se aqui eu to recebendo uma stream de objetos
+//pois to em duvida se estou recendo todos os status de uma vez ou se estou recebendo stream
+//averiguar se eu consigo manipular isso melhor com o "stream" true ou false do endpoint
     } on Exception catch (e) {
       _log.e(e);
       throw Exception('Erro ao criar modelo');
@@ -78,4 +83,7 @@ class OllamaService {
       //fluxo pra demonstrar o erro ao usuario
     }
   }
+
+  //todo: showModelInformations
+  //todo: check if blob exists
 }
