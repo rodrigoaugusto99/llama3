@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ollama/app/app.locator.dart';
 import 'package:ollama/app/app.logger.dart';
 import 'package:ollama/services/ollama_service.dart';
+import 'package:ollama/utils/messages.dart';
 import 'package:stacked/stacked.dart';
 
 class CreateModelViewModel extends BaseViewModel {
@@ -9,7 +10,7 @@ class CreateModelViewModel extends BaseViewModel {
   final TextEditingController descriptionController = TextEditingController();
   final _log = getLogger("CreateModelViewModel");
   final _ollamaService = locator<OllamaService>();
-  Future<void> createModel() async {
+  Future<void> createModel(BuildContext context) async {
     final String modelName = nameController.text;
     final String modelDescription = descriptionController.text;
 
@@ -26,8 +27,10 @@ class CreateModelViewModel extends BaseViewModel {
         name: modelName,
         description: modelDescription,
       );
+      Messages.showSuccessMessage(
+          'Model $modelName criado com sucesso', context);
     } on Exception catch (e) {
-      _log.e(e);
+      Messages.showErrorMessage('Erro ao criar model: $e', context);
     }
   }
 }

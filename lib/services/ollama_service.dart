@@ -4,7 +4,7 @@ import 'package:ollama/models/model_model.dart';
 import 'package:ollama/services/http_service.dart';
 
 class OllamaService {
-  String url = 'http://192.168.1.64';
+  String url = 'http://192.168.1.64:8080';
   final _httpService = locator<HttpService>();
   final _log = getLogger("OllamaService");
 
@@ -18,7 +18,7 @@ class OllamaService {
     };
 
     // Chama a função postStream e retorna o Stream gerado
-    return _httpService.postStream1(
+    return _httpService.postStream(
       url: '$url/api/generate',
       body: body,
     );
@@ -38,11 +38,6 @@ class OllamaService {
         body: body,
       );
       _log.i('criado com sucesso!');
-      //todo: verificar se o ultimo status foi success.
-
-      //todo: averiguar se aqui eu to recebendo uma stream de objetos
-//pois to em duvida se estou recendo todos os status de uma vez ou se estou recebendo stream
-//averiguar se eu consigo manipular isso melhor com o "stream" true ou false do endpoint
     } on Exception catch (e) {
       _log.e(e);
       throw Exception('Erro ao criar modelo');
@@ -68,19 +63,15 @@ class OllamaService {
   Future<void> deleteModel(ModelModel model) async {
     try {
       await _httpService.delete(
-        url: '$url/api/delete',
+        url: '$url/api/delet',
         body: {
           "name": model.name,
         },
       );
-      _log.i('deletado com sucesso!');
+      // _log.i('deletado com sucesso!');
     } on Exception catch (e) {
       _log.e(e);
       throw Exception('Erro ao deletar modelo');
-      //tenho que capturar esse exception lá na viewModel, se nao vai contar como uncaughjt exception.
-      //o ato de capturar ou nao é muito importante? muda algo? se nao capturar, o app trava?
-      //mas se capturar, entao tem que fazer algo especifico pra alem de nao travar, tambem ter um bom
-      //fluxo pra demonstrar o erro ao usuario
     }
   }
 

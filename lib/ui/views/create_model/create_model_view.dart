@@ -38,7 +38,7 @@ class CreateModelView extends StackedView<CreateModelViewModel> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: viewModel.createModel,
+              onPressed: () => viewModel.createModel(context),
               child: const Text('Criar'),
             ),
           ],

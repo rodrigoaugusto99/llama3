@@ -12,8 +12,6 @@ import 'package:ollama/ui/views/choose_model/choose_model_view.dart' as _i6;
 import 'package:ollama/ui/views/create_model/create_model_view.dart' as _i5;
 import 'package:ollama/ui/views/home/home_view.dart' as _i2;
 import 'package:ollama/ui/views/startup/startup_view.dart' as _i3;
-import 'package:ollama/ui/views/talking_with_bob_sponja/talking_with_bob_sponja_view.dart'
-    as _i4;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i9;
 
@@ -48,10 +46,6 @@ class StackedRouter extends _i1.RouterBase {
       page: _i3.StartupView,
     ),
     _i1.RouteDef(
-      Routes.talkingWithBobSponjaView,
-      page: _i4.TalkingWithBobSponjaView,
-    ),
-    _i1.RouteDef(
       Routes.createModelView,
       page: _i5.CreateModelView,
     ),
@@ -72,12 +66,6 @@ class StackedRouter extends _i1.RouterBase {
     _i3.StartupView: (data) {
       return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
-        settings: data,
-      );
-    },
-    _i4.TalkingWithBobSponjaView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.TalkingWithBobSponjaView(),
         settings: data,
       );
     },

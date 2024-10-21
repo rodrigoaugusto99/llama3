@@ -1,14 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:ollama/app/app.locator.dart';
 import 'package:ollama/app/app.logger.dart';
 import 'package:ollama/app/app.router.dart';
 import 'package:ollama/models/model_model.dart';
 import 'package:ollama/services/ollama_service.dart';
-import 'package:ollama/ui/views/startup/startup_viewmodel.dart';
+import 'package:ollama/utils/messages.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class ChooseModelViewModel extends BaseViewModel {
-  ChooseModelViewModel() {
+  BuildContext context;
+  ChooseModelViewModel({
+    required this.context,
+  }) {
     init();
   }
   final _log = getLogger("ChooseModelViewModel");
@@ -37,9 +41,12 @@ class ChooseModelViewModel extends BaseViewModel {
   Future<void> deleteModel(ModelModel model) async {
     try {
       await _ollamaService.deleteModel(model);
+      listOfModels!.remove(model);
+      notifyListeners();
+      Messages.showSuccessMessage('Model deletado', context);
       _log.i('deletado com sucesso');
     } on Exception catch (e) {
-      _log.e(e);
+      Messages.showErrorMessage('Erro ao deletar model: $e', context);
     }
     /*ja fiz catch no service http e no service do ollama.
     terei que fazer try catch aqui tbm? se eu quiser mandar

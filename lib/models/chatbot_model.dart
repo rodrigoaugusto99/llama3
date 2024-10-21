@@ -12,11 +12,6 @@ class ChatbotMessageModel {
   List<IAResponseModel> iaResponses = [];
   final ChatbotTipoPessoa tipoPessoa;
   String? question; //Quando a mensagem for da IA, question será null
-  // ChatbotMessageModel.usuario(this.question)
-  //     : tipoPessoa = ChatbotTipoPessoa.user;
-  // ChatbotMessageModel.ia() : tipoPessoa = ChatbotTipoPessoa.ia;
-
-  // Armazena as respostas da IA em uma lista
 
   // Getter para verificar se a mensagem é do usuário
   bool get isUser => tipoPessoa == ChatbotTipoPessoa.user;

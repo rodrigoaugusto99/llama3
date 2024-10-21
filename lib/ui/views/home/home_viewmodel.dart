@@ -72,6 +72,8 @@ class HomeViewModel extends BaseViewModel {
       iaResponses: [],
     );
 
+    messageController.clear();
+
     // Adiciona a mensagem do usuário a lista de mensagens
     messages.add(messageUser);
     notifyListeners();
@@ -119,7 +121,6 @@ class HomeViewModel extends BaseViewModel {
     );
 
     // Limpa o prompt de mensagem após a inserção
-    messageController.clear();
   }
 
   // void showDialog() {

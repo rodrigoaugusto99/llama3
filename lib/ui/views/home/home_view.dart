@@ -41,9 +41,6 @@ class HomeView extends StackedView<HomeViewModel> {
                   final message = viewModel.messages[index];
 
                   return decContainer(
-                    // leftPadding: 10,
-                    // rightPadding: 10,
-                    // topPadding: 3,
                     child: message.isUser
                         ? ChatBubble(
                             message: message,

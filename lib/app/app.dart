@@ -6,7 +6,6 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:ollama/services/http_service.dart';
 import 'package:ollama/services/ollama_service.dart';
-import 'package:ollama/ui/views/talking_with_bob_sponja/talking_with_bob_sponja_view.dart';
 import 'package:ollama/ui/views/create_model/create_model_view.dart';
 import 'package:ollama/ui/views/choose_model/choose_model_view.dart';
 // @stacked-import
@@ -15,7 +14,6 @@ import 'package:ollama/ui/views/choose_model/choose_model_view.dart';
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    MaterialRoute(page: TalkingWithBobSponjaView),
     MaterialRoute(page: CreateModelView),
     MaterialRoute(page: ChooseModelView),
 // @stacked-route

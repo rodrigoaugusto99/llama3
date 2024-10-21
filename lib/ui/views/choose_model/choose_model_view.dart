@@ -65,5 +65,5 @@ class ChooseModelView extends StackedView<ChooseModelViewModel> {
   ChooseModelViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      ChooseModelViewModel();
+      ChooseModelViewModel(context: context);
 }

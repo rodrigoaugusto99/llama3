@@ -10,10 +10,12 @@ dependencies:
   dio: ^5.7.0
   flutter:
     sdk: flutter
+  flutter_toast_message_bar: ^0.0.8
   http: ^1.2.2
   intl: ^0.19.0
   stacked: ^3.4.0
   stacked_services: ^1.1.0
+  top_snackbar_flutter: ^3.1.0
 
 dev_dependencies:
   build_runner: ^2.4.5

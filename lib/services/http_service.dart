@@ -6,7 +6,7 @@ import 'package:ollama/app/app.logger.dart';
 
 class HttpService {
   final _log = getLogger("HttpService");
-  Future<Stream<String>> postStream1({
+  Future<Stream<String>> postStream({
     required String url,
     Map<String, dynamic>? body,
   }) async {
@@ -17,11 +17,15 @@ class HttpService {
 
     // Envia a requisição e obtém uma resposta em forma de Stream
     final response = await http.Client().send(request);
-    _log.i(response);
-    _log.i(response.stream);
+    // _log.v(response.toString());
+    // _log.v(response.request);
+    // _log.v(response.statusCode);
+    // _log.v(response.reasonPhrase);
+    // _log.v(response.stream.toString());
     // _log.i(response);
 
     // Retorna o Stream transformado em Strings
+    _log.i(response.stream.transform(utf8.decoder));
     return response.stream.transform(utf8.decoder);
   }
 
@@ -30,7 +34,7 @@ class HttpService {
     Map<String, dynamic>? body,
   }) async {
     // Cria a requisição
-    final response = await http.post(
+    http.Response response = await http.post(
       Uri.parse(url),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(body),
@@ -38,7 +42,10 @@ class HttpService {
 
     if (response.statusCode == 200) {
       _log.i("Success: ${response.body}");
-    } else {
+      return;
+    }
+
+    if (response.statusCode >= 400) {
       _log.e("Error: ${response.statusCode}");
       throw Exception("Failed to post");
     }

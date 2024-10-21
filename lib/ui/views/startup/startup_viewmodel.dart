@@ -15,5 +15,7 @@ class StartupViewModel extends BaseViewModel {
 
     //_navigationService.replaceWithHomeView();
     _navigationService.replaceWithChooseModelView();
+    //  ModelModel model = ModelModel(digest: '', name: 'llama3');
+    // _navigationService.replaceWithHomeView(model: model);
   }
 }
